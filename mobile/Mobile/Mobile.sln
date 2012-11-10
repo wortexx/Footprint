@@ -1,7 +1,33 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.ScheduledAgentApp", "Mobile.ScheduledAgentApp\Mobile.ScheduledAgentApp.csproj", "{29BD7D83-6A69-4D96-83DB-20EE8B3033EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.PhoneApp", "Mobile.PhoneApp\Mobile.PhoneApp.csproj", "{5831B6DE-F5D8-43D4-A993-0DF7DC85A3A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.Common", "Mobile.Common\Mobile.Common.csproj", "{B388690F-849B-4CE8-8252-43739A0438FA}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29BD7D83-6A69-4D96-83DB-20EE8B3033EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29BD7D83-6A69-4D96-83DB-20EE8B3033EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29BD7D83-6A69-4D96-83DB-20EE8B3033EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29BD7D83-6A69-4D96-83DB-20EE8B3033EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5831B6DE-F5D8-43D4-A993-0DF7DC85A3A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5831B6DE-F5D8-43D4-A993-0DF7DC85A3A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5831B6DE-F5D8-43D4-A993-0DF7DC85A3A1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5831B6DE-F5D8-43D4-A993-0DF7DC85A3A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5831B6DE-F5D8-43D4-A993-0DF7DC85A3A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5831B6DE-F5D8-43D4-A993-0DF7DC85A3A1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B388690F-849B-4CE8-8252-43739A0438FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B388690F-849B-4CE8-8252-43739A0438FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B388690F-849B-4CE8-8252-43739A0438FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B388690F-849B-4CE8-8252-43739A0438FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
