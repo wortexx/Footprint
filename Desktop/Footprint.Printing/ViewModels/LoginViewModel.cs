@@ -37,8 +37,7 @@ namespace Footprint.Printing.ViewModels
             get { return _password; }
             set { 
                 _password = value; 
-                NotifyOfPropertyChange(() => this.Password);
-                NotifyOfPropertyChange(() => this.CanLogin);
+                NotifyOfPropertyChange(() => this.Password);                
             }
         }
 
@@ -49,7 +48,7 @@ namespace Footprint.Printing.ViewModels
 
         public bool CanLogin
         {
-            get { return !string.IsNullOrEmpty(this.UserName) && !string.IsNullOrEmpty(this.Password); }
+            get { return !string.IsNullOrEmpty(this.UserName); }
         }
 
         public void Login()

@@ -1,10 +1,9 @@
 ﻿namespace Footprint.Printing.Services.Auth
 {
-    public class AuthResult
+    public class LoginResponseModel
     {
-        public bool Result;
-        public string UserName;
-        public string Token;
-        public string Error { get; set; }
+        public string UserName { get; set; }
+        
+        public string Token { get; set; }
     }
 }

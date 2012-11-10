@@ -11,11 +11,10 @@ namespace Footprint.Site.Controllers
     public class PaperController : ApiController
     {
         // POST api/paper
-        [HttpGet]
         [HttpPost]
-        public void Add([FromUri]string token, [FromUri] string amount)
+        public void Add(string token, string pages)
         {
-            Debug.WriteLine(string.Format("{0} - {1}", token, amount));
+            Debug.WriteLine(string.Format("{0} - {1}", token, pages));
         }
     }
 }
