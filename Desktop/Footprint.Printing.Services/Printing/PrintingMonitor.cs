@@ -8,12 +8,19 @@ namespace Footprint.Printing.Services.Printing
 
     public class PrintingMonitor : IPrintingMonitor
     {
+        private readonly IPrintingNotifyService _printingNotifyService;
+
         private const string WmiQuery = "Select * From __InstanceCreationEvent Within 1 " +
                                         "Where TargetInstance ISA 'Win32_PrintJob' ";
 
         private ManagementEventWatcher _watcher;
 
         public event PagesPrinted Printed;
+
+        public PrintingMonitor(IPrintingNotifyService printingNotifyService)
+        {            
+            _printingNotifyService = printingNotifyService;
+        }
 
         protected string ComputerName
         {
@@ -86,6 +93,7 @@ namespace Footprint.Printing.Services.Printing
         {
             if (this.Printed != null)
             {
+                _printingNotifyService.OnPrinted(pages);
                 this.Printed(pages);
             }
         }
