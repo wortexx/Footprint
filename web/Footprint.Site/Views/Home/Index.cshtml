@@ -26,7 +26,7 @@
                         <text>
                             <tr>
                                 <td>@(String.Format("{0}", i))</td>
-                                <td>@Model.Statistic[i].Consumer</td>
+                                <td><b>@Model.Statistic[i].Consumer</b></td>
                                 <td>@(String.Format("{0}", @Model.Statistic[i].Usage)) </td>
                                 <td>@(String.Format("{0}", @Model.Statistic[i].Norm)) </td>
                                 <td>@(String.Format("{0:##.##}%",Math.Round(Model.Statistic[i].Usage / Model.Total * 100,2)))</td>
