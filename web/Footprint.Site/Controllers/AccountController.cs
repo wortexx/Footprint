@@ -7,13 +7,11 @@ using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
-using Footprint.Site.Filters;
 using Footprint.Site.Models;
 
-namespace Footprint.Controllers
+namespace Footprint.Site.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
     public class AccountController : Controller
     {
         //
