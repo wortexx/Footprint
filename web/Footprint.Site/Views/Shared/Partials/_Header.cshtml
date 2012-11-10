@@ -1,0 +1,82 @@
+﻿@using System.Web.Mvc.Html
+@using LocalResources = MSB.Chup.Common.Localization.Properties.Resources;
+
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+            @(Html.ActionLink(" ", "Index", "Dashboard", 
+                              new { Area = "Policy" },
+                              new { width = "44", height = "13", @class = "brand", alt = "Dashboard" }))
+            
+            
+            <ul class="nav nav-pills pull-right">
+                @if (Request.IsAuthenticated)
+                {
+                    <li class="navbar-text welcome">
+                        @LocalResources.WELCOME, <i class="icon-user icon-white"></i> <strong>@User.Identity.Name</strong>
+                    </li>
+                }
+                
+                @if (Request.IsAuthenticated)
+                {
+                    if (this.ViewContext.RouteData.GetRequiredString("controller") == "Dashboard")
+                    {
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" >
+                                <i class="icon-cog icon-white"></i>@LocalResources.TOOLS<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("Edit", "AccountManage", new { area = "Administration", url = Request.Url.AbsolutePath })">@LocalResources.MANAGE_MY_ACCOUNT</a></li>
+                                <li><a href="@Url.Action("Index", "CompanyAdmin", new {Area = "Administration"})">@LocalResources.MSBX</a></li>
+                            </ul>
+                        </li>
+                        <li class="divider-vertical"></li>
+                    }
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" >
+                            <i class="icon-info-sign icon-white"></i>@LocalResources.SUPPORT<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a>Help</a></li>
+                            <li>
+                                @(Html.Dialog()
+                                      .Title(LocalResources.DISCLAIMER_TITLE_ADMIN)
+                                      .LinkText("Terms of Service")
+                                      .LoadContentFromUrl(Url.Action("Terms", "Home", new { area = "" }))
+                                      .IsModal(true)
+                                      .NoButtons()
+                                      .IsResizable(false)
+                                      .IsCloseOnEscape(true)
+                                      .Width(740)
+                                      .Height(600)
+                                      .Buttons(new Dialog.CancelDialogButton() { Text = LocalResources.CLOSE } ))
+                            </li>
+                            <li>
+                                @(Html.Dialog()
+                                      .Title(LocalResources.ABOUT)
+                                      .LinkText(LocalResources.ABOUT)
+                                      .LoadContentFromUrl(Url.Action("About", "Home", new { area = "" }))
+                                      .IsModal(true)
+                                      .NoButtons()
+                                      .IsResizable(false)
+                                      .IsCloseOnEscape(true)
+                                      .Width(740)
+                                      .Height(270)
+                                      .Buttons(new Dialog.CancelDialogButton() { Text = LocalResources.CLOSE } ))
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider-vertical"></li>
+                    <li>
+                        <a href="@Url.Action("LogOff", "Account", new { Area = "Administration" })"><i class="icon-off icon-white" ></i>Log out</a>
+                    </li>
+                }
+                else if (ViewContext.RouteData.GetRequiredString("action") != "LogOn")
+                {
+                    @Html.ActionLink("LogOn", "LogOn", "Account", new { Area = "Administration" }, null)
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+

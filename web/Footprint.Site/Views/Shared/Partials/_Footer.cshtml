@@ -1,0 +1,11 @@
+﻿@using LocalResources = Footprint.Properties.Resources
+
+<div class="copyright">@LocalResources.COPYRIGHT @LocalResources.FOOTPRINT @DateTime.Now.Year</div>
+@if (Request.IsAuthenticated && false)
+{
+    <ul>
+        <li>@Html.ActionLink("About", "About", "Home", new {Area = ""}, null)</li>
+        <li>|</li>
+    </ul>
+}
+ 

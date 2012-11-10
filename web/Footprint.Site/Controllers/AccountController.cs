@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
@@ -11,7 +10,7 @@ using WebMatrix.WebData;
 using Footprint.Site.Filters;
 using Footprint.Site.Models;
 
-namespace Footprint.Site.Controllers
+namespace Footprint.Controllers
 {
     [Authorize]
     [InitializeSimpleMembership]
@@ -48,7 +47,7 @@ namespace Footprint.Site.Controllers
         //
         // POST: /Account/LogOff
 
-        [HttpPost]
+        //[HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {

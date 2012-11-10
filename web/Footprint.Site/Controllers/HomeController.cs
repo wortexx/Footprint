@@ -3,16 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Footprint.Models;
 
 namespace Footprint.Site.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            ViewBag.Message = "Make your life green.....";
 
-            return View();
+            var model = new Consumer
+                {
+                    Statistic = new List<StatisticItemModel>
+                        {
+                            new StatisticItemModel
+                                {
+                                    Consumer = "Car",
+                                    Usage = 10.34M,
+                                    Norm = 4.4M
+                                },
+                            new StatisticItemModel
+                                {
+                                    Consumer = "Printer",
+                                    Usage = 456.34M,
+                                    Norm = 3.4M
+                                }
+                        }
+                };
+
+
+            return View(model);
         }
 
         public ActionResult About()

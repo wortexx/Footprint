@@ -1,0 +1,80 @@
+﻿/* Layouts
+ ------------------------ */
+/* -- Helper Classes -- */
+.empty-footer {
+    height: 30px;
+    clear: both;
+}
+/* -- Header -- */
+header {
+    
+}
+    header .navbar-inner {
+        border-radius: 0 0 0 0;
+        padding: 1px 18px 0 0;
+    }
+     
+    header .brand {
+        /* -- background: transparent url("/Images/logo.jpg") no-repeat scroll center center;-- */
+        height: 19px;
+        width: 62px;
+        margin-left: 6px !important;
+    }
+
+    header .welcome {
+        padding-right: 18px;
+        color: #FFF;
+    }
+
+/* -- Content -- */
+.body-container {
+    position: relative;
+	min-width: 980px;	
+	min-height: 100%;
+    margin-bottom: -30px;
+}
+
+    .content {
+	    padding: 0 25px 25px 25px;
+    }
+
+/* -- Footer -- */
+footer {
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+	background: #313029;
+	color: #FFF;
+    padding: 0 30px;
+    font-size: 90%;
+    z-index: 2;
+    font-size: 12px;
+}
+
+    footer .copyright {
+        float: left;
+    }
+
+    footer ul {
+        list-style: none;
+        float: right;
+        margin: 0;
+    }
+
+        footer li {
+            float: left;
+            margin: 0 4px;
+            line-height: 30px;
+        }
+
+            footer a {
+                color: #fff;
+            }
+        
+            footer a:hover {
+                color: #999;
+            }
+
+footer .bottom_menu .break {
+	color: #787878;
+}
