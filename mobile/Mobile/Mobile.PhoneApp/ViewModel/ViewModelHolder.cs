@@ -1,4 +1,6 @@
-﻿namespace Mobile.PhoneApp.ViewModel
+﻿using System.Windows.Navigation;
+
+namespace Mobile.PhoneApp.ViewModel
 {
     public class ViewModelHolder
     {
@@ -8,6 +10,7 @@
         private ViewModelHolder()
         {
             MainViewModel = new MainViewModel();
+            LoginViewModel = new LoginViewModel();
         }
 
         public static ViewModelHolder Instance
@@ -30,5 +33,9 @@
         }
 
         public MainViewModel MainViewModel { get; private set; }
+
+        public LoginViewModel LoginViewModel { get; private set; }
+
+        public NavigationService NavigationService { get; set; }
     }
 }

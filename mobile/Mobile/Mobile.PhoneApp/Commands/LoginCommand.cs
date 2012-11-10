@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows;
+using System.Windows.Navigation;
 using Mobile.Common.Infrastructure;
 using Mobile.PhoneApp.ViewModel;
 
@@ -43,10 +45,13 @@ namespace Mobile.PhoneApp.Commands
             ViewModel.IsTryingToLogin = true;
             try
             {
+                Thread.Sleep(5000);
                 var loginPasswordPair = parameter as LoginViewModel.LoginPasswordPair;
                 if (loginPasswordPair != null)
                 {
                     IsolatedStorageHelper.SetValue(IsolatedStorageHelper.AuthenticationTokenKey, Login(loginPasswordPair));
+                    ViewModelHolder.Instance.NavigationService.Navigate(new Uri(@"/View/MainPage.xaml", UriKind.Relative));
+                    ViewModelHolder.Instance.NavigationService.RemoveBackEntry();
                 }
             }
             catch (Exception e)

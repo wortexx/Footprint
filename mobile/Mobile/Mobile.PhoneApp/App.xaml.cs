@@ -65,6 +65,7 @@ namespace Mobile.PhoneApp
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+          
         }
 
         // Code to execute when the application is activated (brought to foreground)
@@ -126,8 +127,8 @@ namespace Mobile.PhoneApp
 
             // Ensure we don't initialize again
             phoneApplicationInitialized = true;
-            RootFrame.DataContext = ViewModelHolder.Instance.MainViewModel;
-            CreateResourceTask();
+
+            
         }
 
         private static void CreateResourceTask()
@@ -160,6 +161,22 @@ namespace Mobile.PhoneApp
 
             // Remove this handler since it is no longer needed
             RootFrame.Navigated -= CompleteInitializePhoneApplication;
+
+            AdditionalInitialize();
+        }
+
+        private void AdditionalInitialize()
+        {
+            CreateResourceTask();
+
+            var frame = ((PhoneApplicationFrame) RootVisual);
+            ViewModelHolder.Instance.NavigationService = (frame.Content as PhoneApplicationPage).NavigationService;
+
+            if (ViewModelHolder.Instance.LoginViewModel.IsLoginned)
+            {
+                ViewModelHolder.Instance.NavigationService.Navigate(new Uri(@"/View/MainPage.xaml", UriKind.Relative));
+                ViewModelHolder.Instance.NavigationService.RemoveBackEntry();
+            }
         }
 
         #endregion

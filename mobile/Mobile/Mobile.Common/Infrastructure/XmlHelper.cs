@@ -10,7 +10,7 @@ namespace Mobile.Common.Infrastructure
             using (MemoryStream memoryStream = new MemoryStream())
             using (StreamReader reader = new StreamReader(memoryStream))
             {
-                DataContractSerializer serializer = new DataContractSerializer(obj.GetType());
+                DataContractSerializer serializer = new DataContractSerializer(typeof(T));
                 serializer.WriteObject(memoryStream, obj);
                 memoryStream.Position = 0;
                 return reader.ReadToEnd();
