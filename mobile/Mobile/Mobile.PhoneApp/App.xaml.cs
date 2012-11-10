@@ -132,26 +132,7 @@ namespace Mobile.PhoneApp
             
         }
 
-        private static void CreateResourceTask()
-        {
-            const string footprintTaskName = "FootprintTask";
-            var resourceTask = new ResourceIntensiveTask(footprintTaskName);
-
-            resourceTask.Description = "Footprint task";
-            resourceTask.ExpirationTime = DateTime.Now.AddDays(1);
-
-            // If the agent is already registered with the system,
-            if (ScheduledActionService.Find(resourceTask.Name) != null)
-            {
-                ScheduledActionService.Remove(footprintTaskName);
-            }
-
-            //not supported in current version
-            //periodicTask.BeginTime = DateTime.Now.AddSeconds(10);
-
-            //only can be called when application is running in foreground
-            ScheduledActionService.Add(resourceTask);
-        }
+       
 
         // Do not add any additional code to this method
         private void CompleteInitializePhoneApplication(object sender, NavigationEventArgs e)
@@ -168,8 +149,6 @@ namespace Mobile.PhoneApp
 
         private void AdditionalInitialize()
         {
-            CreateResourceTask();
-
             var frame = ((PhoneApplicationFrame) RootVisual);
             ViewModelHolder.Instance.NavigationService = (frame.Content as PhoneApplicationPage).NavigationService;
 

@@ -6,7 +6,8 @@ namespace Mobile.Common.Infrastructure
     {
         public static RestClient GetClient()
         {
-            return new RestClient("http://localhost:2887");
+            return new RestClient("http://footprint.azurewebsites.net");
+//            return new RestClient("http://localhost:2887");
         }
     }
 }
