@@ -5,11 +5,12 @@
 
 @using (Html.BeginForm()) 
 {
-    @Html.AntiForgeryToken()
+    @*Html.AntiForgeryToken()*@
+    
     @Html.ValidationSummary()
 
     <div class="container">
-        @Html.AntiForgeryToken()
+        @* Html.AntiForgeryToken() *@
         @Html.ValidationSummary(true)
         <fieldset>
             <legend>Register Users</legend>
@@ -33,10 +34,8 @@
                 
             <input name="a" type="hidden" value="login">
             <div class="button_div">
-                <input type="submit" name="Register" value="Login" class="btn btn-primary">
+                <input type="submit" name="Register" value="Register" class="btn btn-primary">
             </div>
-            
-                  
         </fieldset>
     </div>
 }

@@ -7,7 +7,7 @@
     @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
     {
         <div class="container">
-                @Html.AntiForgeryToken()
+                @* Html.AntiForgeryToken() *@
                 @Html.ValidationSummary(true)
                 <fieldset>
                     <legend>Existing Users Login</legend>
