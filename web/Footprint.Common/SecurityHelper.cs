@@ -13,7 +13,7 @@ namespace Footprint.Common
         {
             var hash = Encoding.UTF8.GetBytes(login);
             var md5 = new MD5CryptoServiceProvider();
-            var hashenc = Encoding.UTF8.GetString(md5.ComputeHash(hash));
+            var hashenc = Convert.ToBase64String(md5.ComputeHash(hash));
             return hashenc;
         }
     }
