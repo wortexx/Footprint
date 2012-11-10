@@ -13,7 +13,7 @@ namespace Footprint.Printing.Services.Printing
         {
             var client = new RestClient(this.PrintingNotifyUri);
 
-            var request = new RestRequest("api/paper/add", Method.POST);
+            var request = new RestRequest("api/printing/add", Method.POST);
             request.AddParameter("Token", Settings.Default.Token); // adds to POST or URL querystring based on Method
             request.AddParameter("PagesPrinted", pagesPrinted); // adds to POST or URL querystring based on Method
 
