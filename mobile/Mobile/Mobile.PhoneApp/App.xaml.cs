@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Device.Location;
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -137,7 +138,7 @@ namespace Mobile.PhoneApp
             var resourceTask = new ResourceIntensiveTask(footprintTaskName);
 
             resourceTask.Description = "Footprint task";
-            resourceTask.ExpirationTime = DateTime.Now.AddDays(14);
+            resourceTask.ExpirationTime = DateTime.Now.AddDays(1);
 
             // If the agent is already registered with the system,
             if (ScheduledActionService.Find(resourceTask.Name) != null)
@@ -177,6 +178,9 @@ namespace Mobile.PhoneApp
                 ViewModelHolder.Instance.NavigationService.Navigate(new Uri(@"/View/MainPage.xaml", UriKind.Relative));
                 ViewModelHolder.Instance.NavigationService.RemoveBackEntry();
             }
+
+            GeoCoordinateWatcher geoCoordinateWatcher = new GeoCoordinateWatcher();
+            geoCoordinateWatcher.Start();
         }
 
         #endregion

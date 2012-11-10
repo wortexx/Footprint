@@ -1,26 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{219ef40b-933b-4e61-8961-46cb0f05d6fb}" Title="Tree Footprint" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  Author="Mobile.PhoneApp author" Description="Sample description" Publisher="Mobile.PhoneApp">
+  <App xmlns="" ProductID="{219ef40b-933b-4e61-8961-46cb0f05d6fb}" Title="Tree Footprint" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Mobile.PhoneApp author" Description="Sample description" Publisher="Mobile.PhoneApp">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
-      <Capability Name="ID_CAP_GAMERSERVICES"/>
-      <Capability Name="ID_CAP_IDENTITY_DEVICE"/>
-      <Capability Name="ID_CAP_IDENTITY_USER"/>
-      <Capability Name="ID_CAP_LOCATION"/>
-      <Capability Name="ID_CAP_MEDIALIB"/>
-      <Capability Name="ID_CAP_MICROPHONE"/>
-      <Capability Name="ID_CAP_NETWORKING"/>
-      <Capability Name="ID_CAP_PHONEDIALER"/>
-      <Capability Name="ID_CAP_PUSH_NOTIFICATION"/>
-      <Capability Name="ID_CAP_SENSORS"/>
-      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT"/>
-      <Capability Name="ID_CAP_ISV_CAMERA"/>
-      <Capability Name="ID_CAP_CONTACTS"/>
-      <Capability Name="ID_CAP_APPOINTMENTS"/>
+      <Capability Name="ID_CAP_GAMERSERVICES" />
+      <Capability Name="ID_CAP_IDENTITY_DEVICE" />
+      <Capability Name="ID_CAP_IDENTITY_USER" />
+      <Capability Name="ID_CAP_LOCATION" />
+      <Capability Name="ID_CAP_MEDIALIB" />
+      <Capability Name="ID_CAP_MICROPHONE" />
+      <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_PHONEDIALER" />
+      <Capability Name="ID_CAP_PUSH_NOTIFICATION" />
+      <Capability Name="ID_CAP_SENSORS" />
+      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
+      <Capability Name="ID_CAP_ISV_CAMERA" />
+      <Capability Name="ID_CAP_CONTACTS" />
+      <Capability Name="ID_CAP_APPOINTMENTS" />
     </Capabilities>
     <Tasks>
-      <DefaultTask  Name ="_default" NavigationPage="View\LoginPage.xaml"/>
+      <DefaultTask Name="_default" NavigationPage="View\LoginPage.xaml" />
+      <ExtendedTask Name="BackgroundTask">
+        <BackgroundServiceAgent Specifier="ScheduledTaskAgent" Name="Mobile.ScheduledAgentApp" Source="Mobile.ScheduledAgentApp" Type="Mobile.ScheduledAgentApp.ScheduledAgent" />
+      </ExtendedTask>
     </Tasks>
     <Tokens>
       <PrimaryToken TokenID="Mobile.PhoneAppToken" TaskName="_default">

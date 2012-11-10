@@ -130,6 +130,10 @@
       <Project>{B388690F-849B-4CE8-8252-43739A0438FA}</Project>
       <Name>Mobile.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Mobile.ScheduledAgentApp\Mobile.ScheduledAgentApp.csproj">
+      <Project>{29BD7D83-6A69-4D96-83DB-20EE8B3033EA}</Project>
+      <Name>Mobile.ScheduledAgentApp</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infrastructure\" />

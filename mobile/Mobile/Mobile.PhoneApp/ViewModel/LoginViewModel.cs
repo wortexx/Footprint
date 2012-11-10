@@ -37,6 +37,7 @@ namespace Mobile.PhoneApp.ViewModel
         {
             get
             {
+                return true;
                 var token = IsolatedStorageHelper.GetValue<string>(IsolatedStorageHelper.AuthenticationTokenKey);
                 return !string.IsNullOrWhiteSpace(token);
             }
