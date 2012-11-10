@@ -13,10 +13,10 @@ namespace Footprint.Site.Controllers
     {
         // POST api/paper
         [HttpPost]
-        public void Add(string token, int pages)
+        public bool Add(string token, int pages)
         {
             var module = new PrintingModule();
-            module.Process(token, pages);
+            return module.Process(token, pages);
         }
     }
 }
