@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Footprint.Site", "Footprint
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Footprint.Site.Tests", "Footprint.Site.Tests\Footprint.Site.Tests.csproj", "{D009D114-8292-4ECE-B57F-204C247947CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{DE972C28-0303-488B-86F2-B7E1B6C49799}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{B9CDE628-64A7-49C3-B568-27A894292438}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,10 @@ Global
 		{D009D114-8292-4ECE-B57F-204C247947CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D009D114-8292-4ECE-B57F-204C247947CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D009D114-8292-4ECE-B57F-204C247947CE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE972C28-0303-488B-86F2-B7E1B6C49799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE972C28-0303-488B-86F2-B7E1B6C49799}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE972C28-0303-488B-86F2-B7E1B6C49799}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE972C28-0303-488B-86F2-B7E1B6C49799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9CDE628-64A7-49C3-B568-27A894292438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9CDE628-64A7-49C3-B568-27A894292438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9CDE628-64A7-49C3-B568-27A894292438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9CDE628-64A7-49C3-B568-27A894292438}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
