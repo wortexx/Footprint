@@ -25,31 +25,31 @@ namespace Footprint.Printing.Services.Auth
         public IEnumerable<ValidationResult> Login(string login, string password)
         {
             Logger.Info(string.Format("Trying to login user {0}", login));
-
-            Settings.Default.UserName = login;
-            return Enumerable.Empty<ValidationResult>();
-
             
+            if (password == null)
+            {
+                password = string.Empty;
+            }
+
             var client = new RestClient(this.AuthUri);
             // client.Authenticator = new HttpBasicAuthenticator(username, password);
 
-            var request = new RestRequest("login", Method.POST);
-            request.AddParameter("Login", login); // adds to POST or URL querystring based on Method
-            request.AddParameter("Password", password); // adds to POST or URL querystring based on Method
+            var request = new RestRequest("api/user/login", Method.GET);
+            request.AddParameter("email", login); // adds to POST or URL querystring based on Method
+            request.AddParameter("password", password); // adds to POST or URL querystring based on Method
             
-                       
 
             // or automatically deserialize result
             // return content type is sniffed but can be explicitly set via RestClient.AddHandler();
-            IRestResponse<AuthResult> response = client.Execute<AuthResult>(request);
-            if (response.Data.Result)
+            IRestResponse<LoginResponseModel> response = client.Execute<LoginResponseModel>(request);
+            if (!string.IsNullOrEmpty(response.Data.UserName))
             {
                 Settings.Default.UserName = response.Data.UserName;
                 Settings.Default.Token = response.Data.Token;
                 return Enumerable.Empty<ValidationResult>();
             }
 
-            return new List<ValidationResult> {new ValidationResult(response.Data.Error)};
+            return new List<ValidationResult> {new ValidationResult("Login or password is wrong")};
         }
     }
 }
