@@ -21,6 +21,7 @@ namespace Mobile.PhoneApp.Commands
             WebBrowserTask wbTask = new WebBrowserTask
                                         {
                                             Uri = new Uri("http://footprint.azurewebsites.net", UriKind.Absolute)
+//                                            Uri = new Uri("http://localhost:2887", UriKind.Absolute)
                                         };
             wbTask.Show();
         }
