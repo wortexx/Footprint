@@ -41,4 +41,12 @@ namespace Footprint.Site.Controllers
             base.Dispose(disposing);
         }
     }
+
+    public class AuthController : ApiController
+    {
+        public bool IsValid([FromBody] string email)
+        {
+            return true;
+        }
+    }
 }
