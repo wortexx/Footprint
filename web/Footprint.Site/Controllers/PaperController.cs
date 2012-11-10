@@ -13,9 +13,9 @@ namespace Footprint.Site.Controllers
         // POST api/paper
         [HttpGet]
         [HttpPost]
-        public void Add([FromBody]string value, [FromUri] string email)
+        public void Add([FromUri]string token, [FromUri] string amount)
         {
-            Debug.WriteLine(string.Format("{0} - {1}", email, value));
+            Debug.WriteLine(string.Format("{0} - {1}", token, amount));
         }
     }
 }

@@ -191,6 +191,7 @@
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap-slate.css" />
+    <Content Include="Content\bootstrap-spruce.min.css" />
     <Content Include="Content\bootstrap-ubuntu.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
