@@ -2,15 +2,15 @@
 {
      @:<li>@Html.ActionLink(String.Format("Welcome, {0}.",User.Identity.Name), "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</li>
      @:<li>
-            @Html.ActionLink("Log Off", "LogOff", "Account")
-     @:</li>
+    @Html.ActionLink("Log Off", "LogOff", "Account")
+    @:</li>
 }
 else
 {
     <li>
-          @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
-      </li>
+        @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+    </li>
     <li>
-          @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
     </li>
 }
