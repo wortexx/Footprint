@@ -2,7 +2,9 @@
 using System.Text.RegularExpressions;
 using System.Windows;
 using Mobile.Common.Infrastructure;
+using Mobile.Common.Model;
 using Mobile.PhoneApp.ViewModel;
+using RestSharp;
 
 namespace Mobile.PhoneApp.Commands
 {
@@ -46,20 +48,45 @@ namespace Mobile.PhoneApp.Commands
                 var loginPasswordPair = parameter as LoginViewModel.LoginPasswordPair;
                 if (loginPasswordPair != null)
                 {
-                    IsolatedStorageHelper.SetValue(IsolatedStorageHelper.AuthenticationTokenKey, Login(loginPasswordPair));
+                    Login(loginPasswordPair);
                 }
             }
             catch (Exception e)
             {
-                ViewModel.IsTryingToLogin = false;
                 MessageBox.Show(e.Message);
             }
 
         }
 
-        private string Login(LoginViewModel.LoginPasswordPair loginPasswordPair)
+        private void Login(LoginViewModel.LoginPasswordPair loginPasswordPair)
         {
-            return "Chuck Norris Token";
+            RestClient restClient = WebApi.GetClient();
+            var request = new RestRequest("api/user/login?email={email}&password={password}", Method.GET);
+            request.AddUrlSegment("email", loginPasswordPair.Login); 
+            request.AddUrlSegment("password", loginPasswordPair.Password);
+            restClient.ExecuteAsync<LoginResponseModel>(request, OnLoginSuccess);
+        }
+
+        private void OnLoginSuccess(IRestResponse<LoginResponseModel> response)
+        {
+            try
+            {
+                if (response.ErrorException == null)
+                {
+                    string token = response.Data.Token;
+                    if (string.IsNullOrWhiteSpace(token))
+                    {
+                        MessageBox.Show("User or password are incorrect.");
+                    }
+                    IsolatedStorageHelper.SetValue(IsolatedStorageHelper.AuthenticationTokenKey, token);
+                    ViewModelHolder.Instance.NavigationService.Navigate(new Uri(@"/View/MainPage.xaml", UriKind.Relative));
+                    ViewModelHolder.Instance.NavigationService.RemoveBackEntry();
+                }
+            }
+            finally
+            {
+                ViewModel.IsTryingToLogin = false;
+            }
         }
     }
 }

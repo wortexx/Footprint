@@ -49,7 +49,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+      <HintPath>..\packages\WPtoolkit.4.2012.10.30\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="RestSharp.WindowsPhone">
+      <HintPath>..\packages\RestSharp.104.1\lib\sl4-wp71\RestSharp.WindowsPhone.dll</HintPath>
+    </Reference>
     <Reference Include="System.Device" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -66,8 +72,11 @@
     <Compile Include="Commands\ChangeTrackingCommand.cs" />
     <Compile Include="Commands\GoToSiteCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\BoolToTextConverter.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="View\BasePage.cs" />
+    <Compile Include="View\Helpers\AnimationHelper.cs" />
     <Compile Include="View\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -92,8 +101,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Styles\ProgressBarStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
   </ItemGroup>
@@ -104,12 +118,21 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="README_FIRST.txt" />
     <Content Include="SplashScreenImage.jpg" />
+    <Resource Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Resource Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Resource Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Resource Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mobile.Common\Mobile.Common.csproj">
       <Project>{B388690F-849B-4CE8-8252-43739A0438FA}</Project>
       <Name>Mobile.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mobile.ScheduledAgentApp\Mobile.ScheduledAgentApp.csproj">
+      <Project>{29BD7D83-6A69-4D96-83DB-20EE8B3033EA}</Project>
+      <Name>Mobile.ScheduledAgentApp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

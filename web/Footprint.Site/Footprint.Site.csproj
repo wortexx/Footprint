@@ -167,7 +167,7 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\PositionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PaperController.cs" />
+    <Compile Include="Controllers\PrintingController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -361,6 +361,14 @@
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{b9cde628-64a7-49c3-b568-27a894292438}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Footprint.Common\Footprint.Common.csproj">
+      <Project>{862EA4CD-6FCF-4A8A-A9DD-31A6DE7E19F5}</Project>
+      <Name>Footprint.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Footprint.Printing\Footprint.Printing.csproj">
+      <Project>{4FCEF3BC-A0F8-44C5-B1A2-8608B5C821CA}</Project>
+      <Name>Footprint.Printing</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

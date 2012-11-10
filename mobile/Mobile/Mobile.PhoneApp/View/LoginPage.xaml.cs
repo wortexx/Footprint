@@ -1,28 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using Mobile.PhoneApp.ViewModel;
 
 namespace Mobile.PhoneApp.View
 {
-    public partial class LoginPage : PhoneApplicationPage
+    public partial class LoginPage : BasePage
     {
+        private LoginViewModel.LoginPasswordPair loginPasswordPair = new LoginViewModel.LoginPasswordPair();
+
         public LoginPage()
         {
             InitializeComponent();
+            DataContext = ViewModelHolder.Instance.LoginViewModel;
+
         }
 
-        private void OnLoginClick(object sender, RoutedEventArgs e)
+        private void OnPasswordChanged(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            CheckEnterButton();
+        }
+
+        private void OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            CheckEnterButton();
+        }
+
+        public LoginViewModel.LoginPasswordPair LoginPasswordPair
+        {
+            get { return loginPasswordPair; }
+        }
+
+        private void CheckEnterButton()
+        {
+            loginPasswordPair.Login = loginTextBox.Text;
+            loginPasswordPair.Password = passwordBox.Password;
+            ViewModelHolder.Instance.LoginViewModel.LoginCommand.RaiseCanExecuteChanged();
         }
     }
 }

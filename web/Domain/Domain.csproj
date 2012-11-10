@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Model\FootprintContext.cs" />
     <Compile Include="Model\Membership\User.cs" />
+    <Compile Include="Model\Printing\PrintingItem.cs" />
     <Compile Include="Model\Tracking\LocationTrack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

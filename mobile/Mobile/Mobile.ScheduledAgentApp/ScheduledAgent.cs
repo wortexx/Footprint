@@ -5,6 +5,7 @@ using Microsoft.Phone.Scheduler;
 using Mobile.Common.Infrastructure;
 using Mobile.Common.Model;
 using System.Linq;
+using RestSharp;
 
 namespace Mobile.ScheduledAgentApp
 {
@@ -25,16 +26,17 @@ namespace Mobile.ScheduledAgentApp
         {
             GeoCoordinateWatcher geoCoordinateWatcher = new GeoCoordinateWatcher();
             var currentPosition = geoCoordinateWatcher.Position;
+            if (currentPosition.Location.IsUnknown)
             {
-                if (currentPosition.Location.IsUnknown)
-                {
-                    geoCoordinateWatcher.PositionChanged += PositionChanged;
-                    geoCoordinateWatcher.Start();
-                }
-                else
-                {
-                    UpdatePositionList(currentPosition);
-                }
+                bool tryStart = geoCoordinateWatcher.TryStart(true, TimeSpan.FromSeconds(10));
+                UpdatePositionList(geoCoordinateWatcher.Position);
+
+//                geoCoordinateWatcher.PositionChanged += PositionChanged;
+//                geoCoordinateWatcher.Start();
+            }
+            else
+            {
+                UpdatePositionList(currentPosition);
             }
         }
 
@@ -51,8 +53,12 @@ namespace Mobile.ScheduledAgentApp
         private void UpdatePositionList(GeoPosition<GeoCoordinate> currentPosition)
         {
             var positionList = IsolatedStorageHelper.GetValue<List<Position>>(IsolatedStorageHelper.PositionPointListKey);
+            if (positionList == null)
+            {
+                positionList = new List<Position>();
+            }
             Position position = GetPosition(currentPosition);
-            if (positionList != null)
+            if (position != null)
             {
                 positionList.Add(position);
 
@@ -69,12 +75,25 @@ namespace Mobile.ScheduledAgentApp
                 PushPosition(first);
                 positionList.Remove(first);
                 IsolatedStorageHelper.SetValue(IsolatedStorageHelper.PositionPointListKey, positionList);
+                first = positionList.FirstOrDefault();
             }
         }
 
-        private void PushPosition(Position first)
+        private void PushPosition(Position position)
         {
-            throw new NotImplementedException();
+            RestClient restClient = WebApi.GetClient();
+            var request = new RestRequest("api/position/add?token={token}", Method.POST);
+            request.AddUrlSegment("token", GetToken());
+            request.AddBody(position);
+            restClient.ExecuteAsync(request, response =>
+            {
+            });
+        }
+
+        private static string GetToken()
+        {
+            return "Chuck Norris does not need token";
+            return IsolatedStorageHelper.GetValue<string>(IsolatedStorageHelper.AuthenticationTokenKey);
         }
 
         private Position GetPosition(GeoPosition<GeoCoordinate> position)
