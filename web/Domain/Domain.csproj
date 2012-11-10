@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\FootprintContext.cs" />
     <Compile Include="Model\Membership\User.cs" />
     <Compile Include="Model\Printing\PrintingItem.cs" />

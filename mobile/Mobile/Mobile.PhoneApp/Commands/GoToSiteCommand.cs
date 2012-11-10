@@ -19,9 +19,6 @@ namespace Mobile.PhoneApp.Commands
 
         public override void Execute(object parameter)
         {
-            ScheduledActionService.LaunchForTest("FootprintTask", TimeSpan.FromSeconds(5));
-            return;
-
             WebBrowserTask wbTask = new WebBrowserTask
                                         {
                                             Uri = new Uri("http://footprint.azurewebsites.net", UriKind.Absolute)

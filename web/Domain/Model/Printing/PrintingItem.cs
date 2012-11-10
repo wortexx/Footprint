@@ -4,7 +4,7 @@ using System.Data.Spatial;
 using Footprint.Domain.Model.Membership;
 
 namespace Footprint.Domain.Model.Printing
-{
+{    
     public class PrintingItem
     {
         [Key]
