@@ -10,5 +10,8 @@ namespace Footprint.Models
         public string Consumer { get; set; }
         public decimal Usage { set; get; }
         public decimal Norm { set; get; }
+        public bool IsEffective { get { return Usage <= Norm; }
+        }
+    
     }
 }

@@ -27,8 +27,8 @@ namespace Footprint.Site.Controllers
                             new StatisticItemModel
                                 {
                                     Consumer = "Printer",
-                                    Usage = 456.34M,
-                                    Norm = 3.4M
+                                    Usage = 4.34M,
+                                    Norm = 5.4M
                                 }
                         }
                 };

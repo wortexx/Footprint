@@ -11,7 +11,7 @@
   <div class="row-fluid">
       <div class="span10">
           <!--Body content-->
-          <table class="table" style="width: 40%; max-width: 50%">
+          <table class="table table-striped table-hover" style="width: 40%; max-width: 50%">
               <thead>
                 <tr>
                   <th>#</th>
@@ -29,6 +29,7 @@
                         <td>@Model.Statistic[i].Consumer</td>
                         <td>@(String.Format("{0}", @Model.Statistic[i].Usage)) </td>
                         <td>@(String.Format("{0}", @Model.Statistic[i].Norm)) </td>
+                        <td><img src="@(@Model.Statistic[i].IsEffective ? Url.Content("/Images/leaf-icon-green-large.png"): " ")" width="20%" height="20%" /></td>
                     </tr>
                     </text>
                   }
