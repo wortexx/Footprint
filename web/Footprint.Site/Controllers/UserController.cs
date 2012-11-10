@@ -19,18 +19,24 @@ namespace Footprint.Site.Controllers
         {
             if (login != null)
             {
-                if(WebSecurity.Login(login.Email, login.Password, persistCookie: true))
+                using (var db = new UsersContext())
                 {
-                    var hashenc = SecurityHelper.CalculateHash(login.Email);
+                    var profile = db.UserProfiles.FirstOrDefault(x => x.UserName == login.Email);
 
-                    return new LoginResponseModel
+                    if (profile != null)
                     {
-                        Token = hashenc,
-                        UserName = login.Email
-                    };
+                        var hashenc = SecurityHelper.CalculateHash(login.Email);
+                        return new LoginResponseModel
+                         {
+                             Token = hashenc,
+                             UserName = login.Email
+                         };
+                    }
+
                 }
             }
             return new LoginResponseModel();
+
         }
 
         
