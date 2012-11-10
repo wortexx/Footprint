@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Http;
+using Footprint.Domain;
 using Footprint.Site.Models;
 using WebMatrix.WebData;
 
@@ -18,20 +16,21 @@ namespace Footprint.Site.Controllers
         {
             if (login != null)
             {
-                if(WebSecurity.Login(login.Email, login.Password, persistCookie: true))
+                using (var db = new UsersContext())
                 {
-                    var hash = Encoding.UTF8.GetBytes(login.Email);
-                    var md5 = new MD5CryptoServiceProvider();
-                    var hashenc = Encoding.UTF8.GetString(md5.ComputeHash(hash));
+                    var profile = db.UserProfiles.FirstOrDefault(x => x.UserName == login.Email);
 
-                    return new LoginResponseModel
+                    if (profile != null)
                     {
-                        Token = hashenc,
-                        UserName = login.Email
-                    };
-                }
+                        var tokenGenerator = new TokenGenerator();
 
-              
+                        return new LoginResponseModel
+                                   {
+                                       Token = tokenGenerator.Generate(login.Email),
+                                       UserName = login.Email
+                                   };
+                    }
+                }
             }
             return new LoginResponseModel();
         }
