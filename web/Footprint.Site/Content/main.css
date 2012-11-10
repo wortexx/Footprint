@@ -14,7 +14,12 @@ header {
         padding: 1px 18px 0 0;
     }
      
-     
+    header .brand {
+        /* -- background: transparent url("/Images/logo.jpg") no-repeat scroll center center;-- */
+        height: 19px;
+        width: 62px;
+        margin-left: 6px !important;
+    }
 
     header .welcome {
         padding-right: 18px;

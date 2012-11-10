@@ -6,13 +6,12 @@ namespace Footprint.Site.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                ViewBag.Message = "Make your life green.....";
+            ViewBag.Message = "Make your life green.....";
 
-                var model = new Consumer
+            var model = new Consumer
                 {
                     Statistic = new List<StatisticItemModel>
                         {
@@ -32,13 +31,7 @@ namespace Footprint.Site.Controllers
                 };
 
 
-                return View(model);
-            }
-            else
-            {
-                return View("Home");
-            }
-            
+            return View(model);
         }
 
         public ActionResult About()
