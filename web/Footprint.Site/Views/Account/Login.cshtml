@@ -3,40 +3,46 @@
 @{
     ViewBag.Title = "Log in";
 }
+ <section>
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        <div class="container">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <fieldset>
+                    <legend>Existing Users Login</legend>
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
+                    @Html.LabelFor(m => m.UserName)
+                    <div class="div_text">
+                        <div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "span2"})
+                            @Html.ValidationMessageFor(m => m.UserName)
+                        </div>
 
-<section id="loginForm">
-<h2>Use a local account to log in.</h2>
-@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Log in Form</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
-            </li>
-            <li>
-                @Html.CheckBoxFor(m => m.RememberMe)
-                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
-            </li>
-        </ol>
-        <input type="submit" value="Log in" />
-    </fieldset>
-    <p>
-        @Html.ActionLink("Register", "Register") if you don't have an account.
-    </p>
-}
+                    </div>
+               
+                    @Html.LabelFor(m => m.Password)
+                    <div class="div_text">
+                        <div class="input-prepend"><span class="add-on"><i class="icon-lock"></i></span>
+                            @Html.PasswordFor(m => m.Password, new { @class = "span2"})
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                    </div>
+                
+                    <input name="a" type="hidden" value="login">
+                    <div class="button_div">
+                        <div style="white-space: nowrap">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                        </div>
+                        <input type="submit" name="Submit" value="Login" class="btn btn-primary">
+                    </div>
+            
+                    <div class="clear"></div>
+                    <div class="clear"></div>
+                    <div>@Html.ActionLink("Register", "Register", "Account") if you don't have an account.</div>
+                    <div class="clear"></div>
+                </fieldset>
+            </div>
+    }
 </section>
-

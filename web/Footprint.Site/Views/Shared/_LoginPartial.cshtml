@@ -1,9 +1,13 @@
 ﻿@if (Request.IsAuthenticated)
 {
-     @:<li>@Html.ActionLink(String.Format("Welcome, {0}.",User.Identity.Name), "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</li>
-     @:<li>
-    @Html.ActionLink("Log Off", "LogOff", "Account")
-    @:</li>
+    <text>
+        <li>
+            @Html.ActionLink(String.Format("Welcome, {0}.",User.Identity.Name), "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })
+        </li>
+        <li>
+            <a href="javascript:document.getElementById('logoutForm').submit()" onclick="$('#logoff').click();">LogOff</a>
+        </li>
+    </text>
 }
 else
 {
@@ -13,4 +17,8 @@ else
     <li>
         @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
     </li>
+}
+
+@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
 }
