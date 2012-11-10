@@ -27,11 +27,11 @@ namespace Footprint.Site.Controllers
             
             if (ModelState.IsValid)
             {
-                _db.LocationTracks.Add(position);
+                //_db.LocationTracks.Add(position);
                 _db.SaveChanges();
 
                 var response = Request.CreateResponse(HttpStatusCode.Created, position);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = position.Id }));
+                //response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = positio }));
                 return response;
             }
             else

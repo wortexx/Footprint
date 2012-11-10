@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using Footprint.Models;
 using Footprint.Site.Models;
 
 namespace Footprint.Site.Controllers
