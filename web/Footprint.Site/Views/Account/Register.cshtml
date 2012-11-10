@@ -5,12 +5,7 @@
 
 @using (Html.BeginForm()) 
 {
-    @*Html.AntiForgeryToken()*@
-    
-    @Html.ValidationSummary()
-
-    <div class="container">
-        @* Html.AntiForgeryToken() *@
+<div class="container">
         @Html.ValidationSummary(true)
         <fieldset>
             <legend>Register Users</legend>

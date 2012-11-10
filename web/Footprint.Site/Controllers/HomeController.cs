@@ -24,13 +24,50 @@ namespace Footprint.Site.Controllers
                             new StatisticItemModel
                                 {
                                     Consumer = "Printer",
-                                    Usage = 4.34M,
+                                    Usage = 18.34M,
                                     Norm = 5.4M
-                                }
+                                },
+                           new StatisticItemModel
+                                {
+                                    Consumer = "Water",
+                                    Usage = 5.34M,
+                                    Norm = 5.4M
+                                },
+                           new StatisticItemModel
+                                {
+                                    Consumer = "Electricity",
+                                    Usage = 13.34M,
+                                    Norm = 10.4M
+                                },
+                           new StatisticItemModel
+                                {
+                                    Consumer = "Heating",
+                                    Usage = 15.34M,
+                                    Norm = 34.4M
+                                },
+                           new StatisticItemModel
+                                {
+                                    Consumer = "Cooling",
+                                    Usage = 12.34M,
+                                    Norm = 12.4M
+                                },
+                           new StatisticItemModel
+                                {
+                                    Consumer = "Plastic",
+                                    Usage = 20.34M,
+                                    Norm = 2.4M
+                                },
+                           new StatisticItemModel
+                                {
+                                    Consumer = "Printer",
+                                    Usage = 10.34M,
+                                    Norm = 5.4M
+                                },
+                       
                         }
                 };
 
-
+            
             return View(model);
         }
 
