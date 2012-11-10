@@ -20,8 +20,7 @@ namespace Footprint.Printing.ViewModels
         public ShellViewModel(IAuthService authService, IPrintingMonitor printingMonitor)
         {
             _authService = authService;
-            _printingMonitor = printingMonitor;
-            this.
+            _printingMonitor = printingMonitor;            
             ShowLogin();
         }
 

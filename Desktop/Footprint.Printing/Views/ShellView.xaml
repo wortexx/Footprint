@@ -1,6 +1,6 @@
 ﻿<UserControl x:Class="Footprint.Printing.Views.ShellView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"             >      
     <DockPanel>        
         <ContentControl x:Name="ActiveItem" />
     </DockPanel>

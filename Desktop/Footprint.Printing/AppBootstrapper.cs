@@ -22,6 +22,7 @@ namespace Footprint.Printing
             builder.RegisterAssemblyTypes(this.GetType().Assembly);
             builder.RegisterType<AuthService>().As<IAuthService>();
             builder.RegisterType<PrintingMonitor>().As<IPrintingMonitor>();
+            builder.RegisterType<PrintingNotifyService>().As<IPrintingNotifyService>();
             
             base.ConfigureContainer(builder);
         }
