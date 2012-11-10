@@ -6,27 +6,32 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Authentication;
 using System.Web;
 using System.Web.Http;
 using Footprint.Domain.Model.Tracking;
 using Footprint.Domain.Model;
+using Footprint.Site.Models;
 
 namespace Footprint.Site.Controllers
 {
-    public class LocationTrackController : ApiController
+    public class PositionController : ApiController
     {
         private readonly FootprintContext _db = new FootprintContext();
 
         // POST api/Default1
-        public HttpResponseMessage Add(LocationTrack locationtrack)
+        public HttpResponseMessage Add([FromBody] Position position, [FromUri]  string token)
         {
+            if (string.IsNullOrWhiteSpace(token))
+                throw new AuthenticationException();
+            
             if (ModelState.IsValid)
             {
-                _db.LocationTracks.Add(locationtrack);
+                _db.LocationTracks.Add(position);
                 _db.SaveChanges();
 
-                var response = Request.CreateResponse(HttpStatusCode.Created, locationtrack);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = locationtrack.Id }));
+                var response = Request.CreateResponse(HttpStatusCode.Created, position);
+                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = position.Id }));
                 return response;
             }
             else
@@ -39,14 +44,6 @@ namespace Footprint.Site.Controllers
         {
             _db.Dispose();
             base.Dispose(disposing);
-        }
-    }
-
-    public class AuthController : ApiController
-    {
-        public bool IsValid([FromBody] string email)
-        {
-            return true;
         }
     }
 }

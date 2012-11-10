@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Footprint.Models;
 
 namespace Footprint.Site.Models
 {
