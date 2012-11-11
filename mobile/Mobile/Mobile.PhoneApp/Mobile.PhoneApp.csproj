@@ -72,7 +72,7 @@
     </Compile>
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\ChangeTrackingCommand.cs" />
-    <Compile Include="Commands\GoToSiteCommand.cs" />
+    <Compile Include="Commands\PushDataCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\BoolToTextConverter.cs" />

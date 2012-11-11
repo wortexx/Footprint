@@ -26,13 +26,14 @@ namespace Footprint.Domain.Tracking
 
         public static void CalculateStatistics(this StatisticsItem item, List<LocationTrack> dayTrackList, LocationTrack lastTrack)
         {
+            dayTrackList.Sort((t1, t2) => t1.TimeStamp.CompareTo(t2.TimeStamp));
             LocationTrack lastSaved = dayTrackList.LastOrDefault();
             if (lastSaved == null)
             {
                 return;
             }
 
-            if (lastSaved.TimeStamp.AddMinutes(20) < lastTrack.TimeStamp)
+            if (lastSaved.TimeStamp.AddMinutes(10) < lastTrack.TimeStamp)
             {
                 //Difference too much
                 return;

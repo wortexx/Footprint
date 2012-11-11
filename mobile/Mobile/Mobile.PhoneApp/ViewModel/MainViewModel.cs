@@ -20,11 +20,11 @@ namespace Mobile.PhoneApp.ViewModel
         private void InitializeCommands()
         {
             ChangeTrackingCommand = new ChangeTrackingCommand(this);
-            GoToSiteCommand = new GoToSiteCommand(this);
+            PushDataCommand = new PushDataCommand(this);
         }
 
         public ChangeTrackingCommand ChangeTrackingCommand { get; private set; }
-        public GoToSiteCommand GoToSiteCommand { get; private set; }
+        public PushDataCommand PushDataCommand { get; private set; }
 
         private bool isTrackerRunning;
         public bool IsTrackerRunning
@@ -38,14 +38,14 @@ namespace Mobile.PhoneApp.ViewModel
                 }
                 IsolatedStorageHelper.SetValue(IsolatedStorageHelper.IsTrackingRunningKey, value);
                 isTrackerRunning = value;
-                if (value)
-                {
-                    CreateResourceTask();
-                }
-                else
-                {
-                    RemoveResourceTask();
-                }
+//                if (value)
+//                {
+//                    CreateResourceTask();
+//                }
+//                else
+//                {
+//                    RemoveResourceTask();
+//                }
                 OnPropertyChanged("IsTrackerRunning");
             }
         }
