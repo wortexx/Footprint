@@ -93,5 +93,10 @@ namespace Footprint.Site.Controllers
 
             return View();
         }
+
+        public ActionResult Quiz()
+        {
+            return View(new QuizViewModel());
+        }
     }
 }
