@@ -5,6 +5,7 @@ using System.Transactions;
 using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
+using Footprint.Common;
 using Footprint.Domain.Model;
 using Footprint.Domain.Model.Membership;
 using GreenPlannet.Filters;
@@ -85,6 +86,7 @@ namespace Footprint.Site.Controllers
                         if (profile != null)
                         {
                             profile.Country = model.Country;
+                            profile.Token = SecurityHelper.CalculateHash(model.UserName);
                             db.SaveChanges();
                         }
                     }
