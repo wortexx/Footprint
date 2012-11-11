@@ -28,8 +28,8 @@
                                 <td style="white-space: nowrap;"><i class="icon-ok-circle"></i></td>
                                 <td style="white-space: nowrap;"><b>@Model.Statistic[i].Consumer</b></td>
                                 <td style="white-space: nowrap;">@(String.Format("{0}", @Model.Statistic[i].Norm)) </td>
-                                <td style="white-space: nowrap;">@(String.Format("{0:##.##}",Math.Round(@Model.Statistic[i].Usage)))</td>
-                                <td style="white-space: nowrap;">@(String.Format("{0:##.##}",Math.Round(@Model.Statistic[i].TotalUsage)))</td>
+                                <td style="white-space: nowrap;">@(String.Format("{0}",@Model.Statistic[i].Usage))</td>
+                                <td style="white-space: nowrap;">@(String.Format("{0}",@Model.Statistic[i].TotalUsage))</td>
                                 <td style="white-space: nowrap;"><img src="@(@Model.Statistic[i].IsEffective ? Url.Content("/Images/Green-Leaf-32.png"): Url.Content("/Images/Black-Leaf-32.png"))" /></td>
                             </tr>
                         </text>

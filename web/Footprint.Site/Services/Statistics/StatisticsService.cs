@@ -23,19 +23,22 @@ namespace Footprint.Site.Services.Statistics
                                  })
                 .ToList();
 
+           
+
             var norms = _db.Statistics.GroupBy(x => x.Consumer).Select(x =>
                 new { Consumer = x.Key, Norm = x.Sum(i => i.Value)/x.Count()}).ToDictionary(x => x.Consumer, y => y.Norm);
 
             items.ForEach(x => x.Norm = norms[x.Consumer]);
-
             var assumptions = new AssumptionService();
             var assumed = assumptions.Get(user.Country ?? "Ukraine");
             items.AddRange(assumed.Select(row => new StatisticItemModel
-                                                     {
-                                                         Consumer = row.Key, 
-                                                         Usage = Convert.ToDecimal(row.Value),
-                                                         Norm = Convert.ToDecimal(row.Value)
-                                                     }));
+            {
+                Consumer = row.Key,
+                TotalUsage = Convert.ToDecimal(row.Value),
+                Days = 1,
+                Norm = Convert.ToDecimal(row.Value)
+            }));
+            
             return new Consumer
                        {
                            Statistic = items                           
