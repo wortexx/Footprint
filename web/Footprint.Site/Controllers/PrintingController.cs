@@ -12,7 +12,7 @@ namespace Footprint.Site.Controllers
     public class PrintingController : ApiController
     {
         // POST api/paper
-        [HttpGet]
+        [AcceptVerbs("Get")]
         public bool Add([FromUri] string token, [FromUri] int pages)
         {
             var module = new PrintingModule();

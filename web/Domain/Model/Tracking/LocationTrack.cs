@@ -9,7 +9,7 @@ namespace Footprint.Domain.Model.Tracking
     {
         [Key]
         public Guid Id { get; set; }
-        public User User { get; set; }
+        public UserProfile UserProfile { get; set; }
         public DateTime TimeStamp { get; set; }
         public DbGeography Location { get; set; } 
     }

@@ -5,6 +5,8 @@ using System.Transactions;
 using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
+using Footprint.Domain.Model;
+using Footprint.Domain.Model.Membership;
 using GreenPlannet.Filters;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
@@ -255,7 +257,7 @@ namespace Footprint.Site.Controllers
             if (ModelState.IsValid)
             {
                 // Insert a new user into the database
-                using (UsersContext db = new UsersContext())
+                using (FootprintContext db = new FootprintContext())
                 {
                     UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
                     // Check if user already exists
