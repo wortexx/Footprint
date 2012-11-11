@@ -53,6 +53,7 @@ namespace Footprint.Domain.Tracking
             item.Day = lastTrack.TimeStamp.Date;
             item.UserProfile = lastTrack.UserProfile;
             item.Value = result;
+            item.Consumer = "Car";
         }
 
         private static decimal GetCo2Index(double speed)
