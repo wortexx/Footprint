@@ -34,7 +34,8 @@ namespace Footprint.Site.Controllers
                 LocationTrack locationTrack = CreateLocationTrack(position, token);
                 DateTime trackDate = locationTrack.TimeStamp.Date;
                 var locationTracks = _db.LocationTracks.Where(l => l.TimeStamp > trackDate).ToList();
-                StatisticsItem statisticsItem = _db.Statistics.FirstOrDefault(s => s.Day == trackDate);
+                StatisticsItem statisticsItem = _db.Statistics.FirstOrDefault(s => s.Day == trackDate &&
+                    s.UserProfile.UserId == locationTrack.UserProfile.UserId && s.Consumer == "Car");
                 if (statisticsItem == null)
                 {
                     statisticsItem = new StatisticsItem();
