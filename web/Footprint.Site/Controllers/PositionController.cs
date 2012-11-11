@@ -63,9 +63,10 @@ namespace Footprint.Site.Controllers
             UserProfile user = _db.UserProfiles.First(u => u.UserName == token);
             var locationTrack = new LocationTrack();
             locationTrack.UserProfile = user;
-            locationTrack.TimeStamp = unixEpoch.AddTicks(position.UtcTicks);
+            locationTrack.TimeStamp = DateTime.MinValue.Add(TimeSpan.FromTicks(position.UtcTicks));
             locationTrack.Location = DbGeography.FromText(string.Format("POINT ({0} {1})",position.Latitude, position.Longitude));
             locationTrack.Speed = position.Speed;
+            locationTrack.Id = Guid.NewGuid();
             return locationTrack;
         }
 
