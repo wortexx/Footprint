@@ -11,6 +11,7 @@ namespace Footprint.Common
     {
         public static string CalculateHash(string login)
         {
+            return login;
             var hash = Encoding.UTF8.GetBytes(login);
             var md5 = new MD5CryptoServiceProvider();
             var hashenc = Convert.ToBase64String(md5.ComputeHash(hash));
