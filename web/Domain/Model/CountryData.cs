@@ -29,10 +29,10 @@ namespace Footprint.Domain.Model
             {
                 Name = "Russia",
                 TotalFootprint = 22.41,
-                CoolingPercent = 0.25,
-                ElectricityPercent = 0.25,
-                HeatingPercent = 0.25,
-                WaterPercent = 0.25,
+                CoolingPercent = 0.05,
+                ElectricityPercent = 0.40,
+                HeatingPercent = 0.33,
+                WaterPercent = 0.22,
             });
             Items.Add(new CountryProfile
             {
@@ -47,28 +47,27 @@ namespace Footprint.Domain.Model
             {
                 Name = "Belarus",
                 TotalFootprint = 15.80,
-                CoolingPercent = 0.25,
-                ElectricityPercent = 0.25,
-                HeatingPercent = 0.25,
-                WaterPercent = 0.25,
+                CoolingPercent = 0.05,
+                ElectricityPercent = 0.40,
+                HeatingPercent = 0.33,
+                WaterPercent = 0.22,
             });
             Items.Add(new CountryProfile
             {
                 Name = "Kazakhstan",
                 TotalFootprint = 22.54,
-                CoolingPercent = 0.25,
-                ElectricityPercent = 0.25,
-                HeatingPercent = 0.25,
-                WaterPercent = 0.25,
+                CoolingPercent = 0.05,
+                ElectricityPercent = 0.32,
+                HeatingPercent = 0.33,
+                WaterPercent = 0.30,
             });
             Items.Add(new CountryProfile
             {
                 Name = "Switzerland",
-                TotalFootprint = 25.02,
-                CoolingPercent = 0.25,
-                ElectricityPercent = 0.25,
-                HeatingPercent = 0.25,
-                WaterPercent = 0.25,
+                CoolingPercent = 0.05,
+                ElectricityPercent = 0.40,
+                HeatingPercent = 0.33,
+                WaterPercent = 0.22,
             });
             Items.Add(new CountryProfile
             {
@@ -84,9 +83,9 @@ namespace Footprint.Domain.Model
                 Name = "Germany",
                 TotalFootprint = 45.48,
                 CoolingPercent = 0.04,
-                ElectricityPercent = 0.25,
-                HeatingPercent = 0.25,
-                WaterPercent = 0.25,
+                ElectricityPercent = 0.37,
+                HeatingPercent = 0.37,
+                WaterPercent = 0.22,
             });
             Items.Add(new CountryProfile
             {
