@@ -2,7 +2,7 @@
 {
     public static class Consumers
     {
-        public const string Pringing = "Papers";
+        public const string Printing = "Papers";
         public const string Tracking = "Car";
     }
 }
