@@ -10,7 +10,7 @@
             </a>
             <a class="brand" href="/">@LocalResources.FOOTPRINT</a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
-                @*<ul class="nav">
+                 @*<ul class="nav">
                                 <li class="active"><a href="#">Home</a></li>
                                 <li><a href="#">Link</a></li>
                                 <li><a href="#">Link</a></li>
@@ -29,9 +29,10 @@
                             </ul>*@
 
                 <ul class="nav pull-right">
+                    <li><a class="btn btn-link" href="@Url.Action("Quiz","Home")"><i class="icon-question-sign"> Pass a quiz</i></a></li>
                     @Html.Partial("_LoginPartial")
                     @*<li class="divider-vertical"></li>*@
-                 @*   <form class="navbar-search pull-left" action="">
+                    @*   <form class="navbar-search pull-left" action="">
                         <input type="text" class="search-query span2" placeholder="Search">
                     </form>*@
                 </ul>

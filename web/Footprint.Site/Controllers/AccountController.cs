@@ -91,6 +91,32 @@ namespace Footprint.Site.Controllers
             return View(model);
         }
 
+
+        [HttpPost]
+        public JsonResult FacebookLogin(FacebookLoginModel model)
+        {
+            Session["uid"] = model.uid;
+            Session["accessToken"] = model.accessToken;
+
+            // Attempt to register the user
+            FormsAuthentication.SetAuthCookie(model.uid, true);
+
+            return Json(new { success = true });
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //
         // POST: /Account/Disassociate
 
@@ -259,7 +285,7 @@ namespace Footprint.Site.Controllers
                 // Insert a new user into the database
                 using (FootprintContext db = new FootprintContext())
                 {
-                    UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
+                    var user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
                     // Check if user already exists
                     if (user == null)
                     {

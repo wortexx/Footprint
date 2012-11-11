@@ -5,32 +5,35 @@
 
 @using (Html.BeginForm()) 
 {
-<div class="container">
+    <div class="container">
         @Html.ValidationSummary(true)
         <fieldset>
             <legend>Register Users</legend>
-
-            @Html.LabelFor(m => m.UserName)
-            <div class="div_text">
-                <div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
-                    @Html.TextBoxFor(m => m.UserName, new { @class = "span2"})
-                    @Html.ValidationMessageFor(m => m.UserName)
+            <div class="control-group">
+                @Html.LabelFor(m => m.UserName)
+                <div class="controls">
+                    <div class="input-prepend"><span class="add-on"><i class="icon-envelope"></i></span>
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "input-xlarge"})
+                        
+                    </div>
                 </div>
+                  @Html.ValidationMessageFor(m => m.UserName)
 
             </div>
                
-            @Html.LabelFor(m => m.Password)
-            <div class="div_text">
-                <div class="input-prepend"><span class="add-on"><i class="icon-lock"></i></span>
-                    @Html.PasswordFor(m => m.Password, new { @class = "span2"})
+            <div class="control-group">
+                @Html.LabelFor(m => m.Password)
+                <div class="controls">
+                    <div class="input-prepend"><span class="add-on"><i class="icon-lock"></i></span>
+                        @Html.PasswordFor(m => m.Password, new { @class = "input-xlarge"})
+                    </div>
                     @Html.ValidationMessageFor(m => m.Password)
-                </div>
+                </div> 
             </div>
-                
-            <input name="a" type="hidden" value="login">
-            <div class="button_div">
+            <div class="form-actions">
                 <input type="submit" name="Register" value="Register" class="btn btn-primary">
-            </div>
+            </div>   
+            <input name="a" type="hidden" value="login">
         </fieldset>
     </div>
 }
