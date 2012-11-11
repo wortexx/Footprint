@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
+using Footprint.Domain.Model;
 using Footprint.Site.Models;
 using WebMatrix.WebData;
 
@@ -26,11 +27,11 @@ namespace GreenPlannet.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<FootprintContext>(null);
 
                 try
                 {
-                    using (var context = new UsersContext())
+                    using (var context = new FootprintContext())
                     {
                         if (!context.Database.Exists())
                         {

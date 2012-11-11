@@ -17,7 +17,7 @@ namespace Footprint.Printing
         
         public bool Process(string token, int pagesPrinted)
         {
-            var user = _db.Users.FirstOrDefault(u => SecurityHelper.CalculateHash(u.Email) == token);
+            var user = _db.UserProfiles.FirstOrDefault(u => u.Token == token);
             if (user == null)
             {
                 return false;
@@ -25,11 +25,13 @@ namespace Footprint.Printing
 
             var item = new PrintingItem
                            {
-                               User = user,
+                               Id = Guid.NewGuid(),
+                               UserProfile = user,
                                TimeStamp = DateTime.UtcNow,
                                PagesPrinted = pagesPrinted
                            };
             _db.PrintingItems.Add(item);
+
             return _db.SaveChanges() > 0;
         }
     }

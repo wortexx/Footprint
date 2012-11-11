@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Device.Location;
+using System.Threading;
 using Microsoft.Phone.Scheduler;
 using Mobile.Common.Infrastructure;
 using Mobile.Common.Model;
@@ -11,11 +12,16 @@ namespace Mobile.ScheduledAgentApp
 {
     public class ScheduledAgent : ScheduledTaskAgent
     {
+        private readonly ManualResetEvent waitHandle = new ManualResetEvent(false);
+
         protected override void OnInvoke(ScheduledTask task)
         {
             if (task is ResourceIntensiveTask)
             {
-                StoreCoordinates();
+                if (IsolatedStorageHelper.GetValue<bool>(IsolatedStorageHelper.IsTrackingRunningKey))
+                {
+                    StoreCoordinates();
+                }
 
             }
 
@@ -84,16 +90,20 @@ namespace Mobile.ScheduledAgentApp
             RestClient restClient = WebApi.GetClient();
             var request = new RestRequest("api/position/add?token={token}", Method.POST);
             request.AddUrlSegment("token", GetToken());
+            request.RequestFormat = DataFormat.Json;
             request.AddBody(position);
-            restClient.ExecuteAsync(request, response =>
-            {
-            });
+            restClient.ExecuteAsync(request, response => waitHandle.Set());
+            waitHandle.WaitOne();
         }
 
         private static string GetToken()
         {
-            return "Chuck Norris does not need token";
-            return IsolatedStorageHelper.GetValue<string>(IsolatedStorageHelper.AuthenticationTokenKey);
+            var token = IsolatedStorageHelper.GetValue<string>(IsolatedStorageHelper.AuthenticationTokenKey);
+            if (string.IsNullOrWhiteSpace(token))
+            {
+                return "ChuckNorrisDoesNotNeedToken";
+            }
+            return token;
         }
 
         private Position GetPosition(GeoPosition<GeoCoordinate> position)
