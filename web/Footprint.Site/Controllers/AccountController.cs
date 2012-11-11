@@ -91,6 +91,32 @@ namespace Footprint.Site.Controllers
             return View(model);
         }
 
+
+        [HttpPost]
+        public JsonResult FacebookLogin(FacebookLoginModel model)
+        {
+            Session["uid"] = model.uid;
+            Session["accessToken"] = model.accessToken;
+
+            // Attempt to register the user
+            FormsAuthentication.SetAuthCookie(model.uid, true);
+
+            return Json(new { success = true });
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //
         // POST: /Account/Disassociate
 
