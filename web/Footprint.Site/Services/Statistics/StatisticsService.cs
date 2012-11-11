@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using Footprint.Common;
+﻿using System;
+using System.Linq;
 using Footprint.Domain.Model;
-using Footprint.Domain.Model.Membership;
+using Footprint.Domain.Services;
 using Footprint.Site.Models;
 
 namespace Footprint.Site.Services.Statistics
@@ -18,6 +18,14 @@ namespace Footprint.Site.Services.Statistics
             var items = _db.Statistics.Where(x => x.UserProfile.UserName == userName).GroupBy(x => x.Consumer)
                 .Select(x => new StatisticItemModel {Consumer = x.Key, Usage = x.Sum(i => i.Value)})
                 .ToList();
+            var assumptions = new AssumptionService();
+            var assumed = assumptions.Get(user.Country ?? "Ukraine");
+            items.AddRange(assumed.Select(row => new StatisticItemModel
+                                                     {
+                                                         Consumer = row.Key, 
+                                                         Usage = Convert.ToDecimal(row.Value),
+                                                         Norm = Convert.ToDecimal(row.Value)
+                                                     }));
             return new Consumer
                        {
                            Statistic = items                           

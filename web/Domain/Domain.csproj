@@ -63,6 +63,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\AssumptionService.cs" />
     <Compile Include="Tracking\LocationCalculator.cs" />
   </ItemGroup>
   <ItemGroup>
