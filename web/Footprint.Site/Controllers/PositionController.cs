@@ -11,8 +11,10 @@ using System.Security.Authentication;
 using System.Web;
 using System.Web.Http;
 using Footprint.Domain.Model.Membership;
+using Footprint.Domain.Model.Statistics;
 using Footprint.Domain.Model.Tracking;
 using Footprint.Domain.Model;
+using Footprint.Domain.Tracking;
 using Footprint.Site.Models;
 
 namespace Footprint.Site.Controllers
@@ -29,7 +31,18 @@ namespace Footprint.Site.Controllers
             
             if (ModelState.IsValid)
             {
-                _db.LocationTracks.Add(CreateLocationTrack(position, token));
+                LocationTrack locationTrack = CreateLocationTrack(position, token);
+                DateTime trackDate = locationTrack.TimeStamp.Date;
+                var locationTracks = _db.LocationTracks.Where(l => l.TimeStamp > trackDate).ToList();
+                StatisticsItem statisticsItem = _db.Statistics.FirstOrDefault(s => s.Day == trackDate);
+                if (statisticsItem == null)
+                {
+                    statisticsItem = new StatisticsItem();
+                    _db.Statistics.Add(statisticsItem);
+                }
+                statisticsItem.CalculateStatistics(locationTracks, locationTrack);
+                _db.LocationTracks.Add(locationTrack);
+
                 _db.SaveChanges();
 
                 var response = Request.CreateResponse(HttpStatusCode.Created, position);
@@ -47,11 +60,12 @@ namespace Footprint.Site.Controllers
 
         private LocationTrack CreateLocationTrack(Position position, string token)
         {
-            User user = _db.Users.First(u => u.Email == token);
+            UserProfile user = _db.UserProfiles.First(u => u.UserName == token);
             var locationTrack = new LocationTrack();
-            locationTrack.User = user;
+            locationTrack.UserProfile = user;
             locationTrack.TimeStamp = unixEpoch.AddTicks(position.UtcTicks);
             locationTrack.Location = DbGeography.FromText(string.Format("POINT ({0} {1})",position.Latitude, position.Longitude));
+            locationTrack.Speed = position.Speed;
             return locationTrack;
         }
 

@@ -11,6 +11,7 @@ namespace Footprint.Domain.Model.Tracking
         public Guid Id { get; set; }
         public UserProfile UserProfile { get; set; }
         public DateTime TimeStamp { get; set; }
-        public DbGeography Location { get; set; } 
+        public DbGeography Location { get; set; }
+        public double Speed { get; set; }
     }
 }
