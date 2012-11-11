@@ -1,11 +1,10 @@
 ﻿@model Footprint.Site.Models.Consumer
 
-
 <style media="screen">
     #holder {
-        margin: -150px 0 0 450px;
-        width: 70px;
-        height: 700px;
+        margin: -120px 0 0 200px;
+        width: 0px;
+        height: 0px;
     }
 </style>
 <div id="holder"></div>
@@ -15,7 +14,7 @@
         {<text>
             <tr>
                 <th scope="row">@Model.Statistic[i].Consumer</th>
-                <td>@(String.Format("{0}%",Math.Round(Model.Statistic[i].Usage / Model.Total * 100, 0 )))</td>
+                <td>@(String.Format("{0}%",Math.Round(Model.Statistic[i].C02 / Model.Total * 100, 0 )))</td>
             </tr>
          </text>}
     </tbody>
