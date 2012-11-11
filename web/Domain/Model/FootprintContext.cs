@@ -11,6 +11,7 @@ namespace Footprint.Domain.Model
         public FootprintContext()
             : base("DefaultConnection")
         {
+            
         }
 
         public DbSet<LocationTrack> LocationTracks { get; set; }
