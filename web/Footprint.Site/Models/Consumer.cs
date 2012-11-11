@@ -13,7 +13,7 @@ namespace Footprint.Site.Models
         public IList<StatisticItemModel> Statistic { get; set; }
         public decimal Total
         {
-            get { return Statistic.Sum(x => x.C02); }
+            get { return Statistic.Sum(x => x.Usage); }
         }
     }
 }
