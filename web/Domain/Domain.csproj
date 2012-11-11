@@ -54,6 +54,7 @@
     <Compile Include="Model\Statistics\StatisticsItem.cs" />
     <Compile Include="Model\Tracking\LocationTrack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tracking\LocationCalculator.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
