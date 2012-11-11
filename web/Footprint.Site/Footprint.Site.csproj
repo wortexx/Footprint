@@ -186,6 +186,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\Authorization\FootprintMembershipProvider.cs" />
+    <Compile Include="Services\Statistics\StatisticsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-amelia.css" />
