@@ -41,7 +41,7 @@ namespace Footprint.Printing
         private void UpdateStatistics(UserProfile user, int pagesPrinted)
         {
             var today = DateTime.UtcNow.Date;
-            var item = _db.Statistics.FirstOrDefault(x => x.Day == today && x.Consumer == Consumers.Printing);
+            var item = _db.Statistics.FirstOrDefault(x => x.UserProfile.UserId == user.UserId && x.Day == today && x.Consumer == Consumers.Printing);
             if (item == null)
             {
                 item = new StatisticsItem
