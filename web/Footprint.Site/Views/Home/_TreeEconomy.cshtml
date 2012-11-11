@@ -14,7 +14,7 @@
         {<text>
             <tr>
                 <th scope="row">@Model.Statistic[i].Consumer</th>
-                <td>@(String.Format("{0}%",Math.Round(Model.Statistic[i].C02 / Model.Total * 100, 0 )))</td>
+                <td>@(String.Format("{0}%",Math.Round(Model.Statistic[i].Usage / Model.Total * 100, 0 )))</td>
             </tr>
          </text>}
     </tbody>

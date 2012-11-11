@@ -46,13 +46,13 @@ namespace Footprint.Domain.Tracking
 
             decimal co2Index = GetCo2Index(lastTrack.Speed);
             decimal distanceValue = Convert.ToDecimal(distance.Value);
-            decimal co2InKilograms = 150.0m * co2Index / (distanceValue / 1000.0m);
+            decimal co2InKilograms = 0.15m * co2Index * distanceValue / (1000.0m);
             const decimal co2RecycleInOneDay = 44.0m / 365.0m;
 
             decimal result = co2InKilograms/co2RecycleInOneDay;
             item.Day = lastTrack.TimeStamp.Date;
             item.UserProfile = lastTrack.UserProfile;
-            item.Value = result;
+            item.Value += result;
             item.Consumer = "Car";
         }
 

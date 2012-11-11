@@ -14,10 +14,8 @@
                     <tr>
                         <th style="white-space: nowrap;">#</th>
                         <th style="white-space: nowrap;">Consumer</th>
-                        <th style="white-space: nowrap;">Usage</th>
                         <th style="white-space: nowrap;">Norm</th>
-                        <th style="white-space: nowrap;">C02, gr</th>
-                        <th style="white-space: nowrap;">%</th>
+                        <th style="white-space: nowrap;">Usage</th>
                         <th style="white-space: nowrap;">Status</th>
                     </tr>
                 </thead>
@@ -28,10 +26,8 @@
                             <tr>
                                 <td style="white-space: nowrap;"><i class="icon-ok-circle"></i></td>
                                 <td style="white-space: nowrap;"><b>@Model.Statistic[i].Consumer</b></td>
-                                <td style="white-space: nowrap;">@(@Model.Statistic[i].UsageInCosumerMeasurements)</td>
-                                <td style="white-space: nowrap;">@(String.Format("{0}", @Model.Statistic[i].Norm)) </td>
-                                <td style="white-space: nowrap;">@(String.Format("{0:##.##}",Math.Round(@Model.Statistic[i].C02)))</td>
-                                <td style="white-space: nowrap;">@(String.Format("{0:##.##}%",Math.Round(Model.Statistic[i].C02 / Model.Total * 100,2)))</td>
+                                 <td style="white-space: nowrap;">@(String.Format("{0}", @Model.Statistic[i].Norm)) </td>
+                                <td style="white-space: nowrap;">@(String.Format("{0:##.##}",Math.Round(@Model.Statistic[i].Usage)))</td>
                                 <td style="white-space: nowrap;"><img src="@(@Model.Statistic[i].IsEffective ? Url.Content("/Images/Green-Leaf-32.png"): Url.Content("/Images/Black-Leaf-32.png"))" /></td>
                             </tr>
                         </text>
