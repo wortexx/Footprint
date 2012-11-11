@@ -12,7 +12,11 @@ namespace Footprint.ConsoleApp
     {
         static void Main(string[] args)
         {
+<<<<<<< HEAD
             var restClient = new RestClient("http://localhost:2887");
+=======
+            var restClient = new RestClient("http://localhost:2877");
+>>>>>>> master
             var request = new RestRequest("api/position/add?token={token}", Method.POST);
             request.AddUrlSegment("token", "dummy@gmail.com");
             request.RequestFormat = DataFormat.Json;
