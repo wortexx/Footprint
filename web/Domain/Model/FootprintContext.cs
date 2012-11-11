@@ -16,7 +16,7 @@ namespace Footprint.Domain.Model
 
         public DbSet<LocationTrack> LocationTracks { get; set; }
         public DbSet<PrintingItem> PrintingItems { get; set; }
-        public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; } 
         public DbSet<StatisticsItem> Statistics { get; set; }
     }
 }

@@ -11,5 +11,6 @@ namespace Footprint.Domain.Model.Membership
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string Token { get; set; }
+        public string Country { get; set; }
     }
 }

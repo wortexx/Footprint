@@ -1,4 +1,5 @@
-﻿@model Footprint.Site.Models.RegisterModel
+﻿@using Footprint.Domain.Model
+@model Footprint.Site.Models.RegisterModel
 @{
     ViewBag.Title = "Register";
 }
@@ -20,7 +21,16 @@
                   @Html.ValidationMessageFor(m => m.UserName)
 
             </div>
-               
+            <div class="control-group">
+                @Html.LabelFor(m => m.Country)
+                <div class="controls">
+                    <div class="input-prepend"><span class="add-on"><i class="icon-globe"></i></span>
+                        @Html.DropDownListFor(x => x.Country, CountryData.Items.Select(x => new SelectListItem{ Text = x.Name, Value = x.Name, 
+                       Selected = x.Name == "Ukraine"}), new { @class = "input-xlarge"})
+                        
+                    </div>
+                </div>
+            </div>   
             <div class="control-group">
                 @Html.LabelFor(m => m.Password)
                 <div class="controls">

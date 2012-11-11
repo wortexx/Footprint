@@ -52,7 +52,7 @@ namespace Footprint.Site.Controllers
         public ActionResult LogOff()
         {
             WebSecurity.Logout();
-
+            
             return RedirectToAction("Index", "Home");
         }
 
@@ -79,6 +79,15 @@ namespace Footprint.Site.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
+                    using (var db = new FootprintContext())
+                    {
+                        var profile = db.UserProfiles.FirstOrDefault(x => x.UserName == model.UserName);
+                        if (profile != null)
+                        {
+                            profile.Country = model.Country;
+                            db.SaveChanges();
+                        }
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)

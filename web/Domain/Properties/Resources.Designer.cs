@@ -78,9 +78,9 @@ namespace Footprint.Domain.Properties {
         ///Czech Republic,10.27,5.73,2.67,-3.06
         ///Macedonia,2.04,5.66,1.43,-4 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string countries {
+        internal static string Countries {
             get {
-                return ResourceManager.GetString("countries", resourceCulture);
+                return ResourceManager.GetString("Countries", resourceCulture);
             }
         }
     }
