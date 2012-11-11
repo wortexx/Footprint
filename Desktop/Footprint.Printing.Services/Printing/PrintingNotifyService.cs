@@ -1,12 +1,14 @@
 using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Linq;
+using System.Text;
+using System.Web;
 using Footprint.Printing.Services.Auth;
 using Footprint.Printing.Services.Properties;
 using RestSharp;
 
 namespace Footprint.Printing.Services.Printing
-{
+{    
     public class PrintingNotifyService : IPrintingNotifyService
     {
         public void OnPrinted(int pagesPrinted)
